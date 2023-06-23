@@ -1,0 +1,25 @@
+Object Design:
+
+1. Class: BookIndexGenerator
+   - Properties:
+     - Set<String> excludeWords: Stores the set of words to be excluded from the index.
+     - Map<String, Set<Integer>> wordIndex: Stores the mapping of words to the set of page numbers where they appear.
+
+   - Methods:
+     - readExcludeWords(excludeWordsFilePath: String): void
+       Reads the exclude words from the given file path and populates the `excludeWords` set.
+
+     - generateIndex(pageFilePaths: String[]): void
+       Generates the index by reading the content of the provided page files and populating the `wordIndex` map.
+       Excludes words containing numbers and exclude words from the index.
+
+     - writeIndex(indexPath: String): void
+       Writes the generated index to the specified file path.
+
+     - formatPages(pages: Set<Integer>): String
+       Formats the set of page numbers as a comma-separated string.
+
+2. Class: BookIndexer (Main class)
+   - main(args: String[]): void
+     Entry point of the application. Creates an instance of BookIndexGenerator, invokes the necessary methods, and generates the index.
+
